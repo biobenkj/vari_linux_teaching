@@ -73,7 +73,22 @@ Command cheat sheets
 
 There are *many* built-in commands that you can leverage in the shell. It's not possible to memorize all of them, so here is a `cheat sheet <https://fosswire.com/post/2007/08/unixlinux-command-cheat-sheet/>`_ to refer to.
 
+.. _shellloc:
 
+The location of the shell on your computer
+------------------------------------------
+
+Mac
+---  
+On Mac the shell is available through Terminal  
+Applications -> Utilities -> Terminal  
+Go ahead and drag the Terminal application to your Dock for easy access.
+
+Windows
+-------
+For Windows, we're going to be using gitbash.  
+Download and install [gitbash](http://msysgit.github.io) on your computer.
+Open up the program.
 
 .. _citations:
 
