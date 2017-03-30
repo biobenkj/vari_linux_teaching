@@ -20,8 +20,6 @@ Outline:
 
 * :doc:`resources`
 
-**Cloud computing tutorial** - :doc:`amazonec2`
-
 Contents:
 ^^^^^^^^^
 .. toctree::
