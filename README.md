@@ -1,4 +1,4 @@
-### Linux Teaching Modules Repository
+### Linux Teaching Modules Documentation Repository
 
 ##### The following teaching modules were developed for use at Van Andel Research Institute (VARI) and include content that is both original work and reused/modified from publically available sources. 
 
@@ -42,11 +42,14 @@ pip install Sphinx
 
 ````
 
-##### Homepage
+##### File tree structure
 
-This will need to be updated (links, docs, etc. for each workshop given)
+TODO
+
+##### Slideshows
+
+Use Google docs or Slideshare to provide indefinite open access to any slides used in the workshops outside of the VARI walls.
 
 ##### Licensing
 
 The documents generated within this repository is largely composed of original work but does contain open source material. Therefore, the documentation is meant to be open to the public and outside input is always welcome. No license restricting access to the content should be placed here. Open FTW!
-
