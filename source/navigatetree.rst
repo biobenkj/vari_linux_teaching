@@ -164,7 +164,7 @@ Type::
 
     cd
 
-Then enter the command:
+Then enter the command::
 
     ls processed_data
 
