@@ -1,20 +1,40 @@
-.. vari_linux documentation master file, created by
-   sphinx-quickstart on Wed Mar 29 20:24:14 2017.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+Introduction To Linux And The Shell
+===================================
 
-Welcome to vari_linux's documentation!
-======================================
+Welcome to the workshop!
 
+Below is the outline and documentation we will work through today.
+
+Outline:
+--------
+
+* :doc:`welcome`
+
+* :doc:`getstarted`
+
+* :doc:`navigatetree`
+
+* :doc:`manipfiles`
+
+* :doc:`robots`
+
+* :doc:`resources`
+
+**Cloud computing tutorial** - :doc:`amazonec2`
+
+Contents:
+^^^^^^^^^
+.. toctree::
+   :hidden:
+
+   welcome
+   getstarted
+   navigatetree
+   manipfiles
+   robots
+   resources
+
+   
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
 
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
