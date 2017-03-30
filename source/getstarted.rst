@@ -73,6 +73,29 @@ Command cheat sheets
 
 There are *many* built-in commands that you can leverage in the shell. It's not possible to memorize all of them, so here is a `cheat sheet <https://fosswire.com/post/2007/08/unixlinux-command-cheat-sheet/>`_ to refer to.
 
+Frequently used shell commands
+------------------------------
+
+**1.** Move through folders
+
+**2.** List the contents of a folder
+
+**3.** Make new folders
+
+**4.** Rename files/folders
+
+**5.** Delete files/folders
+
+.. csv-table::
+   :header: " ", "Command", "What it does...", "Examples"
+   :widths: 2, 8, 10, 40
+
+   "**1.**", "cd", "Change directory/folder", "**>** cd ~ (this changes to your home directory); **>** cd .. (this goes back one folder)"
+   "**2.**", "ls", "List the contents of a folder", "**>** ls"
+   "**3.**", "mkdir", "Make a new directory/folder", "**>** mkdir NewFolder (this will make a new folder called 'NewFolder' in your current directory)"
+   "**4.**", "mv", "Rename or move a file from one name to another", "**>** mv file1 file2 (this will rename/move file1 to file2)"  
+   "**5.**", "rm", "Remove a file (add the -r flag to remove a folder)", "**>** rm file1 (remove file1); **>** rm -r folder1 (remove folder1)"
+
 .. _shellloc:
 
 The location of the shell on your computer
@@ -84,7 +107,6 @@ On Mac the shell is available through Terminal
 Applications -> Utilities -> Terminal  
 Go ahead and drag the Terminal application to your Dock for easy access.
 
-*Bonus* - my favorite terminal for Mac is iTerm2 (you do not need to download this, but just for a future reference if you'd like a bit *more* power and customization)
 
 Windows
 -------
@@ -104,6 +126,10 @@ The data set contains a series of folders (directories) with many different type
 Part of the fun will be exploring them :)
 
 Let's download the data :download:`datafile <tutorial-shell-genomics.zip>`
+
+Unzip and place this folder in your home directory.
+
+:ref:`navigatetree`
 
 .. _citations:
 
