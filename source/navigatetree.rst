@@ -315,3 +315,5 @@ To summarize, while you are in the `shell` directory, the commands
 `ls ~`, `ls ~/.`, `ls ../../`, and `ls /home/username` all do exactly the
 same thing. These shortcuts are not necessary, they are provided for
 your convenience.
+
+:ref:`manipfiles`
