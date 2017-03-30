@@ -301,7 +301,7 @@ above your current directory. Thus::
     ls ..
 
 prints the contents of the `/home/username/tutorial-shell-genomics`. You can chain
-these together, so:
+these together, so::
 
     ls ../../
 
