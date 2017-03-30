@@ -84,11 +84,26 @@ On Mac the shell is available through Terminal
 Applications -> Utilities -> Terminal  
 Go ahead and drag the Terminal application to your Dock for easy access.
 
+*Bonus* - my favorite terminal for Mac is iTerm2 (you do not need to download this, but just for a future reference if you'd like a bit *more* power and customization)
+
 Windows
 -------
 For Windows, we're going to be using gitbash.  
-Download and install [gitbash](http://msysgit.github.io) on your computer.
+If you haven't already, please download and install `gitbash <https://git-for-windows.github.io/>`_ on your computer.
 Open up the program.
+
+.. _downloaddata:
+
+Download the data set we will be using today
+--------------------------------------------
+
+What's in the data set?
+
+The data set contains a series of folders (directories) with many different types of files in them.
+
+Part of the fun will be exploring them :)
+
+Let's download the data :download:`datafile <tutorial-shell-genomics.zip>`
 
 .. _citations:
 
