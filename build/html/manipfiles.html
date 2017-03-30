@@ -1,0 +1,507 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Manipulating files in the shell &#8212; VARI Linux Workshop 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Navigating the file tree" href="navigatetree.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="navigatetree.html" title="Navigating the file tree"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">VARI Linux Workshop 0.0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="manipulating-files-in-the-shell">
+<span id="manipfiles"></span><h1>Manipulating files in the shell<a class="headerlink" href="#manipulating-files-in-the-shell" title="Permalink to this headline">¶</a></h1>
+<p>We did several experiments on human tissue samples and really hit it with the sequencing bat. We did Illumina ChIP-seq, RNA-seq, exome and whole genome sequencing (we had money to burn). We also did PacBio and Nanopore sequencing (because why not).
+We have varying numbers of samples for each sequencing platform and type.</p>
+<p>We get our data back from the sequencing center as FASTQ/Fast5 files, and
+we stick them all in a folder called raw_data. This data is actually
+the data we&#8217;re going to use for the rest of the day. Lot&#8217;s of &#8220;mock&#8221; files in here otherwise it&#8217;d take way too long to download all of them.
+The only file that we are going to work with is in the illumina/rnaseq folder. Can you identify which one is real?</p>
+<p>We want to be able to look at these files and do some things with them.</p>
+</div>
+<div class="section" id="wild-cards">
+<span id="wilds"></span><h1>Wild cards<a class="headerlink" href="#wild-cards" title="Permalink to this headline">¶</a></h1>
+<p>Navigate to the <cite>~/tutorial-shell-genomics/raw_data/illumina/rnaseq</cite> directory. This
+directory contains our FASTQ files. If we type:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ls</span>
+</pre></div>
+</div>
+<p>we will see that files have long file names ending with .fastq</p>
+<p>The <cite>*</cite> character is a shortcut for &#8220;everything&#8221;. Thus, if
+you enter <cite>ls *</cite>, you will see all of the contents of a given
+directory. Now try this command:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ls</span> <span class="o">*</span><span class="n">fastq</span>
+</pre></div>
+</div>
+<p>This lists every file that ends with a <cite>fastq</cite>. This command:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ls</span> <span class="o">~/</span><span class="n">tutorial</span><span class="o">-</span><span class="n">shell</span><span class="o">-</span><span class="n">genomics</span><span class="o">/</span><span class="n">src</span><span class="o">/*.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>Lists every file in <cite>~/tutorial-shell-genomics/src</cite> that ends in the characters <cite>.sh</cite>.</p>
+<p>We have single-end sequencing, so for every sample we have one file.</p>
+<p>So how does this actually work? Well...when the shell (bash) sees a
+word that contains the <cite>*</cite> character, it automatically looks for filenames
+that match the given pattern. In this case, it identified four such
+files. Then, it replaced the <cite>*fastq</cite> with the list of files, separated
+by spaces.</p>
+<p>What happens if you do <cite>*fastq</cite>?</p>
+<p><strong>Exercise</strong></p>
+<p>Do each of the following using a single <cite>ls</cite> command without navigating to a different directory.</p>
+<ol class="arabic simple">
+<li>List all of the files in <cite>processed_data/bams</cite> that start with &#8216;a&#8217;</li>
+<li>List all of the files in <cite>processed_data/bams</cite> that contain &#8216;sorted&#8217;</li>
+<li>List all of the files in <cite>processed_data/bams</cite> that end with &#8216;.bai&#8217;</li>
+</ol>
+<p>BONUS: List all of the files in &#8216;processed_data/bams&#8217; that contain &#8216;sorted&#8217; and end with &#8216;.bam&#8217;</p>
+</div>
+<div class="section" id="command-history">
+<h1>Command History<a class="headerlink" href="#command-history" title="Permalink to this headline">¶</a></h1>
+<p>You can easily access previous commands.  Hit the up arrow.
+Hit it again.  You can step backwards through your command history.
+The down arrow takes your forwards in the command history.</p>
+<p>^ = Control key</p>
+<p>^+C will cancel the command you are writing, and give you a fresh prompt.</p>
+<p>^+R will do a reverse-search through your command history.  This is very useful.</p>
+<p>You can also review your recent commands with the <cite>history</cite> command.  Just enter:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">history</span>
+</pre></div>
+</div>
+<p>to see a numbered list of recent commands, including this just issues
+<cite>history</cite> command.  You can reuse one of these commands directly by
+referring to the number of that command.</p>
+<p>If your history looked like this:</p>
+<blockquote>
+<div>259  ls *
+260  ls ~/tutorial-shell-genomics/src/<em>.sh
+261  ls ~/tutorial-shell-genomics/processed_data/bams/</em>.bam*</div></blockquote>
+<p>then you could repeat command #260 by simply entering:</p>
+<blockquote>
+<div>!260</div></blockquote>
+<p>(that&#8217;s an exclamation mark).</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Find the line number in your history for the last exercise (listing files in /bin) and reissue that command.</p>
+</div>
+</div>
+<div class="section" id="examining-files">
+<span id="examinefiles"></span><h1>Examining Files<a class="headerlink" href="#examining-files" title="Permalink to this headline">¶</a></h1>
+<p>We now know how to switch directories, run programs, and look at the
+contents of directories, but how do we look at the contents of files?</p>
+<p>The easiest way to examine a file is to just print out all of the
+contents using the program <cite>cat</cite>. Enter the following command:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="n">SRR5229450</span><span class="o">.</span><span class="n">subset</span><span class="o">.</span><span class="n">fastq</span>
+</pre></div>
+</div>
+<p>This prints out the contents of the <cite>SRR5229450.subset.fastq</cite> file. Science!</p>
+<p><strong>Exercise</strong></p>
+<ol class="arabic simple">
+<li>Print out the contents of the <cite>~/tutorial-shell-genomics/src/hisat2_pass1.sh</cite>
+file. What does this file contain?</li>
+<li>Without changing directories, (you should still be in <cite>tutorial-shell-genomics</cite>),
+use one short command to print the contents of all of the files in
+the <cite>~/tutorial-shell-genomics/src</cite> directory.</li>
+</ol>
+<p>Make sure we&#8217;re in the right place for the next set of the lessons. We
+want to be in the <cite>shell</cite> directory. Check if you&#8217;re there with <cite>pwd</cite>
+and if not navigate there. One way to do that would be:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">~/</span><span class="n">tutorial</span><span class="o">-</span><span class="n">shell</span><span class="o">-</span><span class="n">genomics</span><span class="o">/</span><span class="n">raw_data</span><span class="o">/</span><span class="n">illumina</span><span class="o">/</span><span class="n">rnaseq</span>
+</pre></div>
+</div>
+<p><cite>cat</cite> is a terrific program, but when the file is really big, it can
+be annoying to use. The program, <cite>less</cite>, is useful for this
+case. Enter the following command:</p>
+<blockquote>
+<div>less SRR5229450.subset.fastq</div></blockquote>
+<p><cite>less</cite> opens the file, and lets you navigate through it. The commands
+are identical to the <cite>man</cite> program.</p>
+<p><strong>Some commands in `less`</strong></p>
+<div class="line-block">
+<div class="line">key     | action |</div>
+<div class="line">&#8212;&#8212;- | &#8212;&#8212;&#8212;- |</div>
+<div class="line">&#8220;space&#8221; | to go forward |</div>
+<div class="line-block">
+<div class="line">&#8220;b&#8221;    | to go backwarsd |</div>
+<div class="line">&#8220;g&#8221;    | to go to the beginning |</div>
+<div class="line">&#8220;G&#8221;    | to go to the end |</div>
+<div class="line">&#8220;q&#8221;    | to quit |</div>
+</div>
+</div>
+<p><cite>less</cite> also gives you a way of searching through files. Just hit the
+&#8220;/&#8221; key to begin a search. Enter the name of the word you would like
+to search for and hit enter. It will jump to the next location where
+that word is found. Try searching the <cite>ATG</cite>. If you hit &#8220;/&#8221; then &#8220;enter&#8221;, <cite>less</cite> will just repeat
+the previous search. <cite>less</cite> searches from the current location and
+works its way forward. If you are at the end of the file and search
+for the word &#8220;cat&#8221;, <cite>less</cite> will not find it. You need to go to the
+beginning of the file and search.</p>
+<p>For instance, let&#8217;s search for the sequence <cite>SRR5229450.149</cite> in our file.
+You can see that we go right to that sequence and can see
+what it looks like.</p>
+<p>Remember, the <cite>man</cite> program actually uses <cite>less</cite> internally and
+therefore uses the same commands, so you can search documentation
+using &#8220;/&#8221; as well!</p>
+<p>There&#8217;s another way that we can look at files, and in this case, just
+look at part of them. This can be particularly useful if we just want
+to see the beginning or end of the file, or see how it&#8217;s formatted.</p>
+<p>The commands are <cite>head</cite> and <cite>tail</cite> and they just let you look at
+the beginning and end of a file respectively:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">head</span> <span class="n">SRR5229450</span><span class="o">.</span><span class="n">subset</span><span class="o">.</span><span class="n">fastq</span>
+<span class="n">tail</span> <span class="n">SRR5229450</span><span class="o">.</span><span class="n">subset</span><span class="o">.</span><span class="n">fastq</span>
+</pre></div>
+</div>
+<p>The <cite>-n</cite> option to either of these commands can be used to print the
+first or last <cite>n</cite> lines of a file. To print the first/last line of the
+file use:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">head</span> <span class="o">-</span><span class="n">n</span> <span class="mi">1</span> <span class="n">SRR5229450</span><span class="o">.</span><span class="n">subset</span><span class="o">.</span><span class="n">fastq</span>
+<span class="n">tail</span> <span class="o">-</span><span class="n">n</span> <span class="mi">1</span> <span class="n">SRR5229450</span><span class="o">.</span><span class="n">subset</span><span class="o">.</span><span class="n">fastq</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="searching-files">
+<span id="search"></span><h1>Searching files<a class="headerlink" href="#searching-files" title="Permalink to this headline">¶</a></h1>
+<p>We showed a little how to search within a file using <cite>less</cite>. We can also
+search within files without even opening them, using <cite>grep</cite>. Grep is a command-line
+utility for searching plain-text data sets for lines matching a string or regular expression.
+Let&#8217;s give it a try!</p>
+<p>Let&#8217;s search for that sequence SRR5229450.149 in the SRR5229450.subset.fastq file.</p>
+<blockquote>
+<div>grep SRR5229450.149 SRR5229450.subset.fastq</div></blockquote>
+<p>We get back the whole line that had &#8216;SRR5229450.149&#8217; in it. What if we wanted all
+four lines, the whole part of that FASTQ sequence, back instead.</p>
+<blockquote>
+<div>grep -A 3 SRR5229450.149 SRR5229450.149</div></blockquote>
+<p>The <cite>-A</cite> flag stands for &#8220;after match&#8221; so it&#8217;s returning the line that
+matches plus the three after it. The <cite>-B</cite> flag returns that number of lines
+before the match.</p>
+<p><strong>Exercise</strong></p>
+<p>1. Search for the sequence &#8216;GATCGGAAGAGCACACGTCTGAACTCC&#8217; in the
+SRR5229450.subset.fastq file and in the output have the
+sequence name and the sequence. e.g.
+&#64;M00967:43:000000000-A3JHG:1:2114:11799:28499 1:N:0:188
+TACGGAGGATGCGAGCGTTATCCGGATTTATTGGGTTTAAAGGGTGCGTAGGCGGGATGCAG</p>
+<ol class="arabic simple" start="2">
+<li>Search for that sequence in all the FASTQ files. (this step is a bit of a mock exercise as if you had many .fastq files)</li>
+</ol>
+</div>
+<div class="section" id="redirection">
+<span id="redirect"></span><h1>Redirection<a class="headerlink" href="#redirection" title="Permalink to this headline">¶</a></h1>
+<p>We&#8217;re excited we have all these sequences that we care about that we
+just got from the FASTQ files. That is a really important motif
+that is going to help us answer our important question. But all those
+sequences just went whizzing by with grep. How can we capture them?</p>
+<p>We can do that with something called &#8220;redirection&#8221;. The idea is that
+we&#8217;re redirecting the output to the terminal (all the stuff that went
+whizzing by) to something else. In this case, we want to print it
+to a file, so that we can look at it later.</p>
+<p>The redirection command for putting something in a file is <cite>&gt;</cite></p>
+<p>Let&#8217;s try it out and put all the sequences that contain &#8216;GATCGGAAGAGCACACGTCTGAACTCC&#8217;
+from all the files in to another file called &#8216;good-data.txt&#8217;</p>
+<blockquote>
+<div>grep -B 2 GATCGGAAGAGCACACGTCTGAACTCC * &gt; good-data.txt</div></blockquote>
+<p>The prompt should sit there a little bit, and then it should look like nothing
+happened. But type <cite>ls</cite>. You should have a new file called good-data.txt. Take
+a look at it and see if it has what you think it should.</p>
+<p>There&#8217;s one more useful redirection command that we&#8217;re going to show, and that&#8217;s
+called the pipe command, and it is <cite>|</cite>. It&#8217;s probably not a key on
+your keyboard you use very much. What <cite>|</cite> does is take the output that
+scrolling by on the terminal and then can run it through another command.
+When it was all whizzing by before, we wished we could just slow it down and
+look at it, like we can with <cite>less</cite>. Well it turns out that we can! We pipe
+the <cite>grep</cite> command through <cite>less</cite></p>
+<blockquote>
+<div>grep GATCGGAAGAGCACACGTCTGAACTCC * | less</div></blockquote>
+<p>Now we can use the arrows to scroll up and down and use <cite>q</cite> to get out.</p>
+<p>We can also do something tricky and use the command <cite>wc</cite>. <cite>wc</cite> stands for
+<cite>word count</cite>. It counts the number of lines or characters. So, we can use
+it to count the number of lines we&#8217;re getting back from our <cite>grep</cite> command.
+And that will magically tell us how many sequences we&#8217;re finding. We&#8217;re</p>
+<blockquote>
+<div>grep GATCGGAAGAGCACACGTCTGAACTCC * | wc</div></blockquote>
+<p>That tells us the number of lines, words and characters in the file. If we
+just want the number of lines, we can use the <cite>-l</cite> flag for <cite>lines</cite>.</p>
+<blockquote>
+<div>grep GATCGGAAGAGCACACGTCTGAACTCC * | wc -l</div></blockquote>
+<p>Redirecting is not super intuitive, but it&#8217;s really powerful for stringing
+together these different commands, so you can do whatever you need to do.</p>
+<p>The philosophy behind these command line programs is that none of them
+really do anything all that impressive. BUT when you start chaining
+them together, you can do some really powerful things really
+efficiently. If you want to be proficient at using the shell, you must
+learn to become proficient with the pipe and redirection operators:
+<cite>|</cite>, <cite>&gt;</cite>, <cite>&gt;&gt;</cite>.</p>
+<p><strong>Exercise</strong></p>
+<p>Using redirection, can you get the 500th line in the SRR5229450.subset.fastq file?</p>
+</div>
+<div class="section" id="creating-moving-copying-and-removing">
+<span id="cmcr"></span><h1>Creating, moving, copying, and removing<a class="headerlink" href="#creating-moving-copying-and-removing" title="Permalink to this headline">¶</a></h1>
+<p>Now we can move around in the file structure, look at files, search files,
+redirect. But what if we want to do normal things like copy files or move
+them around or get rid of them. Sure we could do most of these things
+without the command line, but what fun would that be?! Besides it&#8217;s often
+faster to do it at the command line, or you&#8217;ll be on a remote server
+like the VARI HPC or Amazon where you won&#8217;t have another option.</p>
+<p>The SraRunTable.txt file is one that tells us what sample name
+goes with what sequences for an experiment in the Short Read Archive (SRA). This is a really important file, so
+we want to make a copy so we don&#8217;t lose it.</p>
+<p>Lets copy the file using the <cite>cp</cite> command. The <cite>cp</cite>
+command backs up the file. Navigate to the <cite>data</cite> directory and enter:</p>
+<blockquote>
+<div>cp SraRunTable.txt SraRunTable.txt_backup</div></blockquote>
+<p>Now <cite>SraRunTable.txt_backup</cite> has been created as a copy of <cite>SraRunTable.txt</cite>.</p>
+<p>Let&#8217;s make a <cite>backup</cite> directory where we can put this file.</p>
+<p>The <cite>mkdir</cite> command is used to make a directory. Just enter <cite>mkdir</cite>
+followed by a space, then the directory name.</p>
+<blockquote>
+<div>mkdir backup</div></blockquote>
+<p>We can now move our backed up file in to this directory. We can
+move files around using the command <cite>mv</cite>. Enter this command:</p>
+<blockquote>
+<div>mv SraRunTable.txt_backup backup/</div></blockquote>
+<p>This moves <cite>SraRunTable.txt_backup</cite> into the directory <cite>backup/</cite> or
+the full path would be... how would we know?</p>
+<p>The <cite>mv</cite> command is also how you rename files. Since this file is so
+important, let&#8217;s rename it:</p>
+<blockquote>
+<div>mv SraRunTable.txt SraRunTable.txt_IMPORTANT</div></blockquote>
+<p>Now the file name has been changed to SraRunTable.txt_IMPORTANT. Let&#8217;s delete
+the backup file now:</p>
+<blockquote>
+<div>rm backup/stability.files_backup</div></blockquote>
+<p>The <cite>rm</cite> file removes the file. Be careful with this command. It doesn&#8217;t
+just nicely put the files in the Trash. They&#8217;re really gone.</p>
+<p><strong>Exercise</strong></p>
+<p>Do the following:</p>
+<ol class="arabic simple">
+<li>Rename the <cite>SraRunTable.txt_IMPORTANT</cite> file to <cite>SraRunTable.txt</cite>.</li>
+<li>Create a directory in the <cite>rnaseq</cite> directory called <cite>new</cite></li>
+<li>Then, copy the <cite>SraRunTable.txt</cite> file into <cite>new</cite></li>
+</ol>
+<p>By default, <cite>rm</cite>, will NOT delete directories. You can tell <cite>rm</cite> to
+delete a directory using the <cite>-r</cite> option. Let&#8217;s delete that <cite>new</cite> directory
+we just made. Enter the following command:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">rm</span> <span class="o">-</span><span class="n">r</span> <span class="n">new</span>
+</pre></div>
+</div>
+<p>## Writing files</p>
+<p>We&#8217;ve been able to do a lot of work with files that already exist, but what
+if we want to write our own files. Obviously, we&#8217;re not going to type in
+a FASTA file, but you&#8217;ll see as we go through other tutorials, there are
+a lot of reasons we&#8217;ll want to write a file, or edit an existing file.</p>
+<p>To write in files, we&#8217;re going to use the program <cite>nano</cite>. We&#8217;re going to create
+a file that contains the favorite grep command so you can remember it for later. We&#8217;ll name this file
+&#8216;awesome.sh&#8217;.</p>
+<blockquote>
+<div>nano awesome.sh</div></blockquote>
+<p>Cue live coding!</p>
+<p>Now we want to save the file and exit. At the bottom of nano, you see the &#8220;^X Exit&#8221;. That
+means that we use Ctrl-X to exit. Type <cite>Ctrl-X</cite>. It will ask if you want to save it. Type <cite>y</cite> for yes.
+Then it asks if you want that file name. Hit &#8216;Enter&#8217;.</p>
+<p>Now you&#8217;ve written a file. You can take a look at it with less or cat, or open it up again and edit it.</p>
+<p><strong>Exercise</strong></p>
+<p>Open &#8216;awesome.sh&#8217; and add &#8220;echo AWESOME!&#8221; after the grep command and save the file.</p>
+<p>We&#8217;re going to come back and use this file in just a bit.</p>
+<p>## Running programs</p>
+<p>Commands like <cite>ls</cite>, <cite>rm</cite>, <cite>echo</cite>, and <cite>cd</cite> are just ordinary programs
+on the computer. A program is just a file that you can <em>execute</em>. The
+program <cite>which</cite> tells you the location of a particular program. For
+example:</p>
+<blockquote>
+<div>which ls</div></blockquote>
+<p>Might return &#8220;/bin/ls&#8221; (on Mac). Thus, we can see that <cite>ls</cite> is a program that
+sits inside of the <cite>/bin</cite> directory. Now enter:</p>
+<blockquote>
+<div>which find</div></blockquote>
+<p>You will see that <cite>find</cite> is a program that sits inside of the
+<cite>/usr/bin</cite> directory.</p>
+<p>So ... when we enter a program name, like <cite>ls</cite>, and hit enter, how
+does the shell know where to look for that program? How does it know
+to run <cite>/bin/ls</cite> when we enter <cite>ls</cite>. The answer is that when we enter
+a program name and hit enter, there are a few standard places that the
+shell automatically looks. If it can&#8217;t find the program in any of
+those places, it will print an error saying &#8220;command not found&#8221;. Enter
+the command:</p>
+<blockquote>
+<div>echo $PATH</div></blockquote>
+<p>This will print out the value of the <cite>PATH</cite> environment variable. More
+on environment variables later. Notice that a list of directories,
+separated by colon characters, is listed. These are the places the
+shell looks for programs to run. If your program is not in this list,
+then an error is printed. The shell ONLY checks in the places listed
+in the <cite>PATH</cite> environment variable.</p>
+<p>Navigate to the <cite>src</cite> directory and list the contents. You will
+notice that there is a program (executable file) called <cite>hello.sh</cite> in
+this directory. Now, try to run the program by entering:</p>
+<blockquote>
+<div>hello.sh</div></blockquote>
+<p>You should get an error saying that hello.sh cannot be found. That is
+because the directory <cite>/home/username/tutorial-shell-genomics/src/hello.sh</cite> is not in the
+<cite>PATH</cite>. You can run the <cite>hello.sh</cite> program by entering:</p>
+<blockquote>
+<div>./hello.sh</div></blockquote>
+<p>Remember that <cite>.</cite> is a shortcut for the current working
+directory. This tells the shell to run the <cite>hello.sh</cite> program which is
+located right here. So, you can run any program by entering the path
+to that program. You can run <cite>hello.sh</cite> equally well by specifying:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="n">tutorial</span><span class="o">-</span><span class="n">shell</span><span class="o">-</span><span class="n">genomics</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">hello</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>Or by entering:</p>
+<blockquote>
+<div>~/tutorial-shell-genomics/src/</div></blockquote>
+<p>When there are no <cite>/</cite> characters, the shell assumes you want to look
+in one of the default places for the program.</p>
+<p>## Writing scripts</p>
+<p>We know how to write files and run scripts, so I bet you can guess where
+this is headed. We&#8217;re going to run our own script!</p>
+<p>Go in to the &#8216;rnaseq&#8217; directory where we created &#8216;awesome.sh&#8217; before. Remember we wrote our
+favorite grep command in there. Since we like it so much, we might want to run it
+again, or even all the time. Instead of writing it out every time, we can just run it as
+a script.</p>
+<p>It&#8217;s a command, so we should just be able to run it. Give it try.</p>
+<blockquote>
+<div>./awesome.sh</div></blockquote>
+<p>Alas, we get <cite>-bash: ./awesome.sh: Permission denied</cite>. This is because we haven&#8217;t told
+the computer that it&#8217;s a program. To do that we have to make it &#8216;executable&#8217;. We do this
+by changing its mode. The command for that is <cite>chmod</cite> - change mode. We&#8217;re going to change the mode
+of this file, so that it&#8217;s executable and the computer knows it&#8217;s OK to run it as a program.</p>
+<blockquote>
+<div>chmod +x awesome.sh</div></blockquote>
+<p>Now let&#8217;s try running it again</p>
+<blockquote>
+<div>./awesome.sh</div></blockquote>
+<p>Now you should have seen some output, and of course, it&#8217;s AWESOME!
+Congratulations, you just created your first shell script! You&#8217;re set to rule the world.</p>
+</div>
+<div class="section" id="finding-files">
+<span id="findingthings"></span><h1>Finding files<a class="headerlink" href="#finding-files" title="Permalink to this headline">¶</a></h1>
+<p>The <cite>find</cite> program can be used to find files based on arbitrary
+criteria. Navigate to the <cite>data</cite> directory and enter the following
+command:</p>
+<blockquote>
+<div>find . -print</div></blockquote>
+<p>This prints the name of every file or directory, recursively, starting
+from the current directory. Let&#8217;s exclude all of the directories:</p>
+<blockquote>
+<div>find . -type f -print</div></blockquote>
+<p>This tells <cite>find</cite> to locate only files. Now try these commands:</p>
+<blockquote>
+<div>find . -type f -name &#8220;<em>1</em>&#8221;
+find . -type f -name &#8220;<em>1</em>&#8221; -or -name &#8220;<em>2</em>&#8221; -print
+find . -type f -name &#8220;<em>1</em>&#8221; -and -name &#8220;<em>2</em>&#8221; -print</div></blockquote>
+<p>The <cite>find</cite> command can acquire a list of files and perform some
+operation on each file. Try this command out:</p>
+<blockquote>
+<div>find . -type f -exec grep ATG {} ;</div></blockquote>
+<p>This command finds every file starting from <cite>.</cite>. Then it searches each
+file for a line which contains the pattern &#8220;ATG&#8221;. The <cite>{}</cite> refers to
+the name of each file. The trailing <cite>;</cite> is used to terminate the
+command.  This command is slow, because it is calling a new instance
+of <cite>grep</cite> for each item the <cite>find</cite> returns.</p>
+<p>A faster way to do this is to use the <cite>xargs</cite> command:</p>
+<blockquote>
+<div>find . -type f -print | xargs grep ATG</div></blockquote>
+<p><cite>find</cite> generates a list of all the files we are interested in,
+then we pipe them to <cite>xargs</cite>.  <cite>xargs</cite> takes the items given to it
+and passes them as arguments to <cite>grep</cite>.  <cite>xargs</cite> generally only creates
+a single instance of <cite>grep</cite> (or whatever program it is running).</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Manipulating files in the shell</a></li>
+<li><a class="reference internal" href="#wild-cards">Wild cards</a></li>
+<li><a class="reference internal" href="#command-history">Command History</a></li>
+<li><a class="reference internal" href="#examining-files">Examining Files</a></li>
+<li><a class="reference internal" href="#searching-files">Searching files</a></li>
+<li><a class="reference internal" href="#redirection">Redirection</a></li>
+<li><a class="reference internal" href="#creating-moving-copying-and-removing">Creating, moving, copying, and removing</a></li>
+<li><a class="reference internal" href="#finding-files">Finding files</a></li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="navigatetree.html"
+                        title="previous chapter">Navigating the file tree</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/manipfiles.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="navigatetree.html" title="Navigating the file tree"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">VARI Linux Workshop 0.0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Benjamin K Johnson.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+    </div>
+  </body>
+</html>

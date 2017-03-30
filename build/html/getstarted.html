@@ -1,0 +1,269 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Getting started with the shell &#8212; VARI Linux Workshop 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Navigating the file tree" href="navigatetree.html" />
+    <link rel="prev" title="Welcome!" href="welcome.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="navigatetree.html" title="Navigating the file tree"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="welcome.html" title="Welcome!"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">VARI Linux Workshop 0.0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="getting-started-with-the-shell">
+<span id="getstarted"></span><h1>Getting started with the shell<a class="headerlink" href="#getting-started-with-the-shell" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="what-is-the-shell">
+<span id="whatis"></span><h2>What is the shell?<a class="headerlink" href="#what-is-the-shell" title="Permalink to this headline">¶</a></h2>
+<p>This kind of interface is called a
+<strong>command-line interface</strong>, or CLI,
+to distinguish it from a
+<strong>graphical user interface</strong>, or GUI,
+which most people now use.
+The heart of a CLI is a <strong>read-evaluate-print loop</strong>, or REPL:
+when the user types a command and then presses the Enter (or Return) key,
+the computer reads it,
+executes it,
+and prints its output.
+The user then types another command,
+and so on until the user logs off.</p>
+<p>This description makes it sound as though the user sends commands directly to the computer,
+and the computer sends output directly to the user.
+In fact,
+there is usually a program in between called a
+<strong>command shell</strong>.
+What the user types goes into the shell,
+which then figures out what commands to run and orders the computer to execute them.
+(Note that the shell is called &#8220;the shell&#8221; because it encloses the operating system
+in order to hide some of its complexity and make it simpler to interact with.)</p>
+<p>A shell is a program like any other.
+What&#8217;s special about it is that its job is to run other programs
+rather than to do calculations itself.
+The most popular Unix shell is Bash,
+the Bourne Again SHell
+(so-called because it&#8217;s derived from a shell written by Stephen Bourne).
+Bash is the default shell on most modern implementations of Unix
+and in most packages that provide Unix-like tools for Windows.</p>
+<p>Using Bash or any other shell
+sometimes feels more like programming than like using a mouse.
+Commands are terse (often only a couple of characters long),
+their names are frequently cryptic,
+and their output is lines of text rather than something visual like a graph.
+On the other hand,
+with only a few keystrokes, the shell allows us to combine existing tools into
+powerful pipelines and handle large volumes of data automatically. This automation
+not only makes us more productive but also improves the reproducibility of our workflows by
+allowing us to repeat them with few simple commands.
+In addition, the command line is often the easiest way to interact with remote machines and supercomputers.
+Familiarity with the shell is near essential to run a variety of specialized tools and resources
+including high-performance computing systems.
+As clusters and cloud computing systems become more popular for scientific data crunching,
+being able to interact with the shell is becoming a necessary skill.
+We can build on the command-line skills covered here
+to tackle a wide range of scientific questions and computational challenges.</p>
+<p><strong>There are many reasons to learn about the shell.</strong></p>
+<ul class="simple">
+<li>For most bioinformatics tools, you have to use the shell. There is no graphical interface. If you want to work in genomics you&#8217;re going to need to use the shell.</li>
+<li>The shell gives you <em>power</em>. The command line gives you the power to do your work more efficiently and more quickly.  When you need to do things tens to hundreds of times, knowing how to use the shell is transformative.</li>
+<li>To use the VARI high performance computing (HPC) cluster, you need to use the shell.</li>
+</ul>
+</div>
+<div class="section" id="command-cheat-sheets">
+<span id="commandsheets"></span><h2>Command cheat sheets<a class="headerlink" href="#command-cheat-sheets" title="Permalink to this headline">¶</a></h2>
+<p>There are <em>many</em> built-in commands that you can leverage in the shell. It&#8217;s not possible to memorize all of them, so here is a <a class="reference external" href="https://fosswire.com/post/2007/08/unixlinux-command-cheat-sheet/">cheat sheet</a> to refer to.</p>
+</div>
+<div class="section" id="frequently-used-shell-commands">
+<h2>Frequently used shell commands<a class="headerlink" href="#frequently-used-shell-commands" title="Permalink to this headline">¶</a></h2>
+<p><strong>1.</strong> Move through folders</p>
+<p><strong>2.</strong> List the contents of a folder</p>
+<p><strong>3.</strong> Make new folders</p>
+<p><strong>4.</strong> Rename files/folders</p>
+<p><strong>5.</strong> Delete files/folders</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="3%" />
+<col width="13%" />
+<col width="17%" />
+<col width="67%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">&nbsp;</th>
+<th class="head">Command</th>
+<th class="head">What it does...</th>
+<th class="head">Examples</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>1.</strong></td>
+<td>cd</td>
+<td>Change directory/folder</td>
+<td><strong>&gt;</strong> cd ~ (this changes to your home directory); <strong>&gt;</strong> cd .. (this goes back one folder)</td>
+</tr>
+<tr class="row-odd"><td><strong>2.</strong></td>
+<td>ls</td>
+<td>List the contents of a folder</td>
+<td><strong>&gt;</strong> ls</td>
+</tr>
+<tr class="row-even"><td><strong>3.</strong></td>
+<td>mkdir</td>
+<td>Make a new directory/folder</td>
+<td><strong>&gt;</strong> mkdir NewFolder (this will make a new folder called &#8216;NewFolder&#8217; in your current directory)</td>
+</tr>
+<tr class="row-odd"><td><strong>4.</strong></td>
+<td>mv</td>
+<td>Rename or move a file from one name to another</td>
+<td><strong>&gt;</strong> mv file1 file2 (this will rename/move file1 to file2)</td>
+</tr>
+<tr class="row-even"><td><strong>5.</strong></td>
+<td>rm</td>
+<td>Remove a file (add the -r flag to remove a folder)</td>
+<td><strong>&gt;</strong> rm file1 (remove file1); <strong>&gt;</strong> rm -r folder1 (remove folder1)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="the-location-of-the-shell-on-your-computer">
+<span id="shellloc"></span><h2>The location of the shell on your computer<a class="headerlink" href="#the-location-of-the-shell-on-your-computer" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="mac">
+<h2>Mac<a class="headerlink" href="#mac" title="Permalink to this headline">¶</a></h2>
+<p>On Mac the shell is available through Terminal
+Applications -&gt; Utilities -&gt; Terminal
+Go ahead and drag the Terminal application to your Dock for easy access.</p>
+</div>
+<div class="section" id="windows">
+<h2>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h2>
+<p>For Windows, we&#8217;re going to be using gitbash.
+If you haven&#8217;t already, please download and install <a class="reference external" href="https://git-for-windows.github.io/">gitbash</a> on your computer.
+Open up the program.</p>
+</div>
+<div class="section" id="download-the-data-set-we-will-be-using-today">
+<span id="downloaddata"></span><h2>Download the data set we will be using today<a class="headerlink" href="#download-the-data-set-we-will-be-using-today" title="Permalink to this headline">¶</a></h2>
+<p>What&#8217;s in the data set?</p>
+<p>The data set contains a series of folders (directories) with many different types of files in them.</p>
+<p>Part of the fun will be exploring them :)</p>
+<p>Let&#8217;s download the data <a class="reference download internal" href="_downloads/tutorial-shell-genomics.zip" download=""><code class="xref download docutils literal"><span class="pre">datafile</span></code></a></p>
+<p>Unzip and place this folder in your home directory.</p>
+<p><a class="reference internal" href="navigatetree.html#navigatetree"><span class="std std-ref">Navigating the file tree</span></a></p>
+</div>
+<div class="section" id="citations">
+<span id="id1"></span><h2>Citations<a class="headerlink" href="#citations" title="Permalink to this headline">¶</a></h2>
+<p>This material was modified from the genomics shell lesson from Data Carpentry:</p>
+<p><a class="reference external" href="https://github.com/datacarpentry/shell-genomics">https://github.com/datacarpentry/shell-genomics</a></p>
+<p>This material was also modified from:</p>
+<p>Gabriel Devenyi, Christina Koch, and Ashwin Srinath (eds): &#8220;Software
+Carpentry: The Unix Shell.&#8221;  Version 2016.06, June 2016,
+<a class="reference external" href="https://github.com/swcarpentry/shell-novice">https://github.com/swcarpentry/shell-novice</a>, 10.5281/zenodo.57544.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Getting started with the shell</a><ul>
+<li><a class="reference internal" href="#what-is-the-shell">What is the shell?</a></li>
+<li><a class="reference internal" href="#command-cheat-sheets">Command cheat sheets</a></li>
+<li><a class="reference internal" href="#frequently-used-shell-commands">Frequently used shell commands</a></li>
+<li><a class="reference internal" href="#the-location-of-the-shell-on-your-computer">The location of the shell on your computer</a></li>
+<li><a class="reference internal" href="#mac">Mac</a></li>
+<li><a class="reference internal" href="#windows">Windows</a></li>
+<li><a class="reference internal" href="#download-the-data-set-we-will-be-using-today">Download the data set we will be using today</a></li>
+<li><a class="reference internal" href="#citations">Citations</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="welcome.html"
+                        title="previous chapter">Welcome!</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="navigatetree.html"
+                        title="next chapter">Navigating the file tree</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/getstarted.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="navigatetree.html" title="Navigating the file tree"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="welcome.html" title="Welcome!"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">VARI Linux Workshop 0.0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Benjamin K Johnson.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+    </div>
+  </body>
+</html>

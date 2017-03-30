@@ -16,8 +16,6 @@ Outline:
 
 * :doc:`manipfiles`
 
-* :doc:`robots`
-
 * :doc:`resources`
 
 Contents:
@@ -29,7 +27,6 @@ Contents:
    getstarted
    navigatetree
    manipfiles
-   robots
    resources
 
    

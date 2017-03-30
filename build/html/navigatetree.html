@@ -1,0 +1,384 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Navigating the file tree &#8212; VARI Linux Workshop 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Manipulating files in the shell" href="manipfiles.html" />
+    <link rel="prev" title="Getting started with the shell" href="getstarted.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="manipfiles.html" title="Manipulating files in the shell"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="getstarted.html" title="Getting started with the shell"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">VARI Linux Workshop 0.0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="navigating-the-file-tree">
+<span id="navigatetree"></span><h1>Navigating the file tree<a class="headerlink" href="#navigating-the-file-tree" title="Permalink to this headline">¶</a></h1>
+<p>Wait, what is a &#8220;file tree&#8221;?</p>
+<p>Let&#8217;s find out!</p>
+<p>Now let&#8217;s go in to that directory:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">tutorial</span><span class="o">-</span><span class="n">shell</span><span class="o">-</span><span class="n">genomics</span>
+</pre></div>
+</div>
+<p>This stands for &#8216;change directory&#8217;</p>
+<p>In this directory, there should be some things we just downloaded.
+Let&#8217;s check. Type:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ls</span>
+</pre></div>
+</div>
+<p>ls stands for &#8216;list&#8217; and it lists the contents of a directory.</p>
+<p>There&#8217;s a few directories there, but not too many. Let&#8217;s go look in the raw_data
+directory:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">raw_data</span>
+<span class="n">ls</span>
+</pre></div>
+</div>
+<p>In there, all mixed up together are files and directories/folders. If we want to
+know which is which, we can type:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ls</span> <span class="o">-</span><span class="n">F</span>
+</pre></div>
+</div>
+<p>Anything with a &#8220;/&#8221; after it is a directory.
+Things with a &#8220;*&#8221; after them are programs.
+It there&#8217;s nothing there it&#8217;s a file.</p>
+<p>You can also use the command <cite>ls -l</cite> to see whether items in a
+directory are files or directories. <cite>ls -l</cite> gives a lot more
+information too, such as the size of the file</p>
+<p>So, we can see that we have several files, directories and a program. Great!</p>
+<div class="section" id="arguments">
+<span id="args"></span><h2>Arguments<a class="headerlink" href="#arguments" title="Permalink to this headline">¶</a></h2>
+<p>Most programs take additional arguments that control their exact
+behavior. For example, <cite>-F</cite> and <cite>-l</cite> are arguments to <cite>ls</cite>.  The <cite>ls</cite>
+program, like many programs, take a lot of arguments. But how do we
+know what the options are to particular commands?</p>
+<p>Most commonly used shell programs have a manual. You can access the
+manual using the <cite>man</cite> program. Try entering:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">man</span> <span class="n">ls</span>
+</pre></div>
+</div>
+<p>This will open the manual page for <cite>ls</cite>. Use the space key to go
+forward and b to go backwards. When you are done reading, just hit <cite>q</cite>
+to quit.</p>
+<p>Programs that are run from the shell can get extremely complicated. To
+see an example, open up the manual page for the <cite>find</cite> program.
+No one can possibly learn all of
+these arguments, of course. So you will probably find yourself
+referring back to the manual page frequently.</p>
+</div>
+<div class="section" id="the-unix-directory-file-structure-a-k-a-where-am-i">
+<span id="unixtree"></span><h2>The Unix directory file structure (a.k.a. where am I?)<a class="headerlink" href="#the-unix-directory-file-structure-a-k-a-where-am-i" title="Permalink to this headline">¶</a></h2>
+<p>As you&#8217;ve already just seen, you can move around in different directories
+or folders at the command line. Why would you want to do this, rather
+than just navigating around the normal way.</p>
+<p>When you&#8217;re working with bioinformatics programs, you&#8217;re working with
+your data and it&#8217;s key to be able to have that data in the right place
+and make sure the program has access to the data. Many of the problems
+people run in to with command line bioinformatics programs is not having the
+data in the place the program expects it to be.</p>
+</div>
+<div class="section" id="moving-around-the-file-system">
+<span id="movearound"></span><h2>Moving around the file system<a class="headerlink" href="#moving-around-the-file-system" title="Permalink to this headline">¶</a></h2>
+<p>Let&#8217;s practice moving around a bit.</p>
+<p>We&#8217;re going to work in that <cite>tutorial-shell-genomics</cite> directory we just downloaded.</p>
+<p>First let&#8217;s navigate there using the regular way by clicking on the different folders.</p>
+<p>First we did something like go to the folder of our username. Then we opened
+&#8216;tutorial-shell-genomics&#8217; then &#8216;raw_data&#8217;</p>
+<p>Let&#8217;s draw out how that went.</p>
+<p>Now let&#8217;s draw some of the other files and folders we could have clicked on.</p>
+<p>This is called a hierarchical file system structure, like an upside down tree
+with root (/) at the base that looks like this.</p>
+<img alt="File tree" class="align-center" src="_images/filetree.jpg" />
+<p>That (/) at the base is often also called the &#8216;top&#8217; level.</p>
+<p>When you are working at your computer or log in to a remote computer,
+you are on one of the branches of that tree, your home directory (/home/username)</p>
+<p>Now let&#8217;s go do that same navigation at the command line.</p>
+<p>Type:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span>
+</pre></div>
+</div>
+<p>This puts you in your home directory. This folder here.</p>
+<p>Now using <cite>cd</cite> and <cite>ls</cite>, go in to the <cite>tutorial-shell-genomics</cite> directory and list its contents.</p>
+<p>Let&#8217;s also check to see where we are. Sometimes when we&#8217;re wandering around
+in the file system, it&#8217;s easy to lose track of where we are and get lost.</p>
+<p>If you want to know what directory you&#8217;re currently in, type:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pwd</span>
+</pre></div>
+</div>
+<p>This stands for &#8216;present working directory&#8217;. The directory you&#8217;re currently
+working in.</p>
+<p>What if we want to move back up and out of the &#8216;raw_data&#8217; directory? Can we just
+type &#8216;tutorial-shell-genomics&#8217;? Try it and see what happens.</p>
+<p>To go &#8216;back up a level&#8217; we need to use <cite>..</cite></p>
+<p>Type:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">..</span>
+</pre></div>
+</div>
+<p>Now do <cite>ls</cite> and <cite>pwd</cite>. See now that we went back up in to the &#8216;tutorial-shell-genomics&#8217;
+directory. <cite>..</cite> just means go back up a level.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Now we&#8217;re going to try a hunt. Move around in the &#8216;hidden&#8217; directory and try to find the file &#8216;youfoundit.txt&#8217;</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Extra credit if you can use arguments to <cite>ls</cite> to find supersecret_youfoundit.txt</p>
+</div>
+</div>
+<div class="section" id="examining-the-contents-of-other-directories">
+<span id="otherdirs"></span><h2>Examining the contents of other directories<a class="headerlink" href="#examining-the-contents-of-other-directories" title="Permalink to this headline">¶</a></h2>
+<p>By default, the <cite>ls</cite> commands lists the contents of the working
+directory (i.e. the directory you are in). You can always find the
+directory you are in using the <cite>pwd</cite> command. However, you can also
+give <cite>ls</cite> the names of other directories to view. Navigate to the
+home directory if you are not already there.</p>
+<p>Type:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span>
+</pre></div>
+</div>
+<p>Then enter the command:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ls</span> <span class="n">processed_data</span>
+</pre></div>
+</div>
+<p>This will list the contents of the <cite>processed_data</cite> directory without
+you having to navigate there.</p>
+<p>The <cite>cd</cite> command works in a similar way. Try entering:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span>
+<span class="n">cd</span> <span class="n">tutorial</span><span class="o">-</span><span class="n">shell</span><span class="o">-</span><span class="n">genomics</span><span class="o">/</span><span class="n">processed_data</span><span class="o">/</span><span class="n">bams</span>
+</pre></div>
+</div>
+<p>and you will jump directly to <cite>bams</cite> without having to go through
+the intermediate directory.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Try finding the &#8216;hisat2_pass1.sh&#8217; file without changing directories.</p>
+</div>
+</div>
+<div class="section" id="shortcut-tab-completion">
+<span id="shortcut"></span><h2>Shortcut: Tab Completion<a class="headerlink" href="#shortcut-tab-completion" title="Permalink to this headline">¶</a></h2>
+<p>Navigate to the home directory. Typing out directory names can waste a
+lot of time. When you start typing out the name of a directory, then
+hit the tab key, the shell will try to fill in the rest of the
+directory name. For example, enter:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">tut</span><span class="o">&lt;</span><span class="n">tab</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>The shell will fill in the rest of the directory name for
+<cite>tutorial-shell-genomics</cite>. Now go to tutorial-shell-genomics/raw_data/illumina/rnaseq and type:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ls</span> <span class="n">SRR</span><span class="o">&lt;</span><span class="n">tab</span><span class="o">&gt;&lt;</span><span class="n">tab</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>When you hit the first tab, nothing happens. The reason is that there
+are multiple files in the directory which start with
+<cite>SRR</cite>. Thus, the shell does not know which one to fill in. When you hit
+tab again, the shell will list the possible choices.</p>
+<p>Tab completion can also fill in the names of programs. For example,
+enter:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">e</span><span class="o">&lt;</span><span class="n">tab</span><span class="o">&gt;&lt;</span><span class="n">tab</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>You will see the name of every program that starts with an <cite>e</cite>. One of those is <cite>echo</cite>. If you enter <cite>ec&lt;tab&gt;</cite> you
+will see that tab completion works.</p>
+</div>
+<div class="section" id="full-vs-relative-paths">
+<span id="paths"></span><h2>Full vs. Relative Paths<a class="headerlink" href="#full-vs-relative-paths" title="Permalink to this headline">¶</a></h2>
+<p>The <cite>cd</cite> command takes an argument which is the directory
+name. Directories can be specified using either a <em>relative</em> path or a
+full <em>path</em>. The directories on the computer are arranged into a
+hierarchy. The full path tells you where a directory is in that
+hierarchy. Navigate to the home directory. Now, enter the <cite>pwd</cite>
+command and you should see:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">username</span>
+</pre></div>
+</div>
+<p>which is the full name of your home directory. This tells you that you
+are in a directory called <cite>username</cite>, which sits inside a directory called
+<cite>home</cite> which sits inside the very top directory in the hierarchy. The
+very top of the hierarchy is a directory called <cite>/</cite> which is usually
+referred to as the <em>root directory</em>. So, to summarize: <cite>username</cite> is a
+directory in <cite>home</cite> which is a directory in <cite>/</cite>.</p>
+<p>Now enter the following command:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="n">tutorial</span><span class="o">-</span><span class="n">shell</span><span class="o">-</span><span class="n">genomics</span><span class="o">/</span><span class="n">raw_data</span><span class="o">/</span><span class="n">illumina</span><span class="o">/</span><span class="n">rnaseq</span>
+</pre></div>
+</div>
+<p>This jumps to <cite>rnaseq</cite>. Now go back to the home directory (cd). We saw
+earlier that the command:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">tutorial</span><span class="o">-</span><span class="n">shell</span><span class="o">-</span><span class="n">genomics</span><span class="o">/</span><span class="n">raw_data</span><span class="o">/</span><span class="n">illumina</span><span class="o">/</span><span class="n">rnaseq</span>
+</pre></div>
+</div>
+<p>had the same effect - it took us to the <cite>rnaseq</cite> directory. But,
+instead of specifying the full path
+(<cite>/home/username/tutorial-shell-genomics/raw_data/illumina/rnaseq</cite>), we specified a <em>relative path</em>. In
+other words, we specified the path relative to our current
+directory. A full path always starts with a <cite>/</cite>. A relative path does
+not.</p>
+<p>A relative path is like getting directions
+from someone on the street. They tell you to &#8220;go right at the Stop sign, and
+then turn left on Main Street&#8221;. That works great if you&#8217;re standing there
+together, but not so well if you&#8217;re trying to tell someone how to get there
+from another country. A full path is like GPS coordinates.
+It tells you exactly where something
+is no matter where you are right now.</p>
+<p>You can usually use either a full path or a relative path
+depending on what is most convenient. If we are in the home directory,
+it is more convenient to just enter the relative path since it
+involves less typing.</p>
+<p>Over time, it will become easier for you to keep a mental note of the
+structure of the directories that you are using and how to quickly
+navigate amongst them.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Now, list the contents of the /bin directory. Windows users, you might need to look in Windows/System32 or System64. Do you see anything familiar in there?</p>
+</div>
+</div>
+<div class="section" id="saving-time-with-shortcuts-wild-cards-and-tab-completion">
+<span id="savetime"></span><h2>Saving time with shortcuts, wild cards, and tab completion<a class="headerlink" href="#saving-time-with-shortcuts-wild-cards-and-tab-completion" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="shortcuts">
+<h2>Shortcuts<a class="headerlink" href="#shortcuts" title="Permalink to this headline">¶</a></h2>
+<p>There are some shortcuts which you should know about. Dealing with the
+home directory is very common. So, in the shell the tilde character,
+&#8220;&#8221;~&#8221;&#8221;, is a shortcut for your home directory. Navigate to the <cite>tutorial-shell-genomics</cite>
+directory:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span>
+<span class="n">cd</span> <span class="n">tutorial</span><span class="o">-</span><span class="n">shell</span><span class="o">-</span><span class="n">genomics</span>
+<span class="n">cd</span> <span class="n">raw_data</span>
+</pre></div>
+</div>
+<p>Then enter the command:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ls</span> <span class="o">~</span>
+</pre></div>
+</div>
+<p>This prints the contents of your home directory, without you having to
+type the full path. The shortcut <cite>..</cite> always refers to the directory
+above your current directory. Thus:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ls</span> <span class="o">..</span>
+</pre></div>
+</div>
+<p>prints the contents of the <cite>/home/username/tutorial-shell-genomics</cite>. You can chain
+these together, so:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ls</span> <span class="o">../../</span>
+</pre></div>
+</div>
+<p>prints the contents of <cite>/home/username</cite> which is your home
+directory. Finally, the special directory <cite>.</cite> always refers to your
+current directory. So, <cite>ls</cite>, <cite>ls .</cite>, and <cite>ls ././././.</cite> all do the
+same thing, they print the contents of the current directory. This may
+seem like a useless shortcut right now, but we&#8217;ll see when it is
+needed in a little while.</p>
+<p>To summarize, while you are in the <cite>shell</cite> directory, the commands
+<cite>ls ~</cite>, <cite>ls ~/.</cite>, <cite>ls ../../</cite>, and <cite>ls /home/username</cite> all do exactly the
+same thing. These shortcuts are not necessary, they are provided for
+your convenience.</p>
+<p><a class="reference internal" href="manipfiles.html#manipfiles"><span class="std std-ref">Manipulating files in the shell</span></a></p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Navigating the file tree</a><ul>
+<li><a class="reference internal" href="#arguments">Arguments</a></li>
+<li><a class="reference internal" href="#the-unix-directory-file-structure-a-k-a-where-am-i">The Unix directory file structure (a.k.a. where am I?)</a></li>
+<li><a class="reference internal" href="#moving-around-the-file-system">Moving around the file system</a></li>
+<li><a class="reference internal" href="#examining-the-contents-of-other-directories">Examining the contents of other directories</a></li>
+<li><a class="reference internal" href="#shortcut-tab-completion">Shortcut: Tab Completion</a></li>
+<li><a class="reference internal" href="#full-vs-relative-paths">Full vs. Relative Paths</a></li>
+<li><a class="reference internal" href="#saving-time-with-shortcuts-wild-cards-and-tab-completion">Saving time with shortcuts, wild cards, and tab completion</a></li>
+<li><a class="reference internal" href="#shortcuts">Shortcuts</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="getstarted.html"
+                        title="previous chapter">Getting started with the shell</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="manipfiles.html"
+                        title="next chapter">Manipulating files in the shell</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/navigatetree.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="manipfiles.html" title="Manipulating files in the shell"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="getstarted.html" title="Getting started with the shell"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">VARI Linux Workshop 0.0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Benjamin K Johnson.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.1.
+    </div>
+  </body>
+</html>
