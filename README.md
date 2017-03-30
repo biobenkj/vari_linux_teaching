@@ -1,8 +1,4 @@
-### Linux Teaching Modules Homepage Repository
-
-##### The following files are meant to be the homepage for people to navigate to and register for a particular workshop
-
-Below this line is a rehashing of the README from the main teaching modules location
+### Linux Teaching Modules Repository
 
 ##### The following teaching modules were developed for use at Van Andel Research Institute (VARI) and include content that is both original work and reused/modified from publically available sources. 
 
