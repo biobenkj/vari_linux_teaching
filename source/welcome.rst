@@ -79,5 +79,6 @@ Warning
 
 This will likely be frustrating. Computers are literal. They will do *exactly* what you ask them to do. If you add an extra space here or there, or give it a file that doesn't exist, it will complain and not do what you hoped it would do.
 
-BUT! We've brought coffee and have some instructors who'd love to help alleviate that frustration and show you the power you wield over your machine.
+BUT! We've brought coffee and have some instructors who'd love to help alleviate that frustration and show you the power you wield over your machine to analyze large datasets.
 
+Now, :ref:`let's get started! <getstarted>`
