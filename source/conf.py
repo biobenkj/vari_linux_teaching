@@ -45,7 +45,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'VARI Linux Workshop'
+project = u'vari_linux'
 copyright = u'2017, Benjamin K Johnson'
 author = u'Benjamin K Johnson'
 
