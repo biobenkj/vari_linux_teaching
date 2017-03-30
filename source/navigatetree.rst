@@ -192,12 +192,12 @@ Shortcut: Tab Completion
 Navigate to the home directory. Typing out directory names can waste a
 lot of time. When you start typing out the name of a directory, then
 hit the tab key, the shell will try to fill in the rest of the
-directory name. For example, enter:
+directory name. For example, enter::
 
     cd tut<tab>
 
 The shell will fill in the rest of the directory name for
-`tutorial-shell-genomics`. Now go to tutorial-shell-genomics/raw_data/illumina/rnaseq
+`tutorial-shell-genomics`. Now go to tutorial-shell-genomics/raw_data/illumina/rnaseq and type::
 
     ls SRR<tab><tab>
 
@@ -208,6 +208,7 @@ tab again, the shell will list the possible choices.
 
 Tab completion can also fill in the names of programs. For example,
 enter::
+
     e<tab><tab>
     
 You will see the name of every program that starts with an `e`. One of those is `echo`. If you enter `ec<tab>` you
@@ -240,7 +241,7 @@ Now enter the following command::
     cd /home/username/tutorial-shell-genomics/raw_data/illumina/rnaseq
 
 This jumps to `rnaseq`. Now go back to the home directory (cd). We saw
-earlier that the command:
+earlier that the command::
 
     cd tutorial-shell-genomics/raw_data/illumina/rnaseq
 
