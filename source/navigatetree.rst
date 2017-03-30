@@ -270,7 +270,7 @@ structure of the directories that you are using and how to quickly
 navigate amongst them.
 
 
-.. note:: Now, list the contents of the /bin directory. Do you see anything familiar in there?
+.. note:: Now, list the contents of the /bin directory. Windows users, you might need to look in Windows/System32 or System64. Do you see anything familiar in there?
 
 
 .. _savetime:
