@@ -31,7 +31,7 @@ conda install -c anaconda sphinx=1.5.1
 
 ````
 
-If you have base Python with pip installed:
+If you have base Python with pip installed: 
 
 ````
 
